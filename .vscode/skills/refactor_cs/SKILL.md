@@ -69,8 +69,9 @@ Keep any `using` that is genuinely required by the solution logic and is NOT a g
 
 ---
 
-### 4. Replace `Console.WriteLine` with `Debug.Assert`
-Replace every verification call with a `Debug.Assert` that compares the return value against the expected value shown in the comment.
+### 4. Replace `Console.WriteLine` with `Debug.Assert` in `Main` only
+Replace verification calls **in the `Main` method** with `Debug.Assert` that compares the return value against the expected value shown in the comment.
+**Keep all `Console.WriteLine` calls inside `Solution` methods** — they are useful for debugging and must not be removed.
 
 Before:
 ```csharp
@@ -88,7 +89,8 @@ Debug.Assert(sol.ReachableNodes(edges, maxMoves, n) == 13);
   ```csharp
   Debug.Assert(sol.UncommonFromSentences(s1, s2).SequenceEqual(new[] { "sweet", "sour" }));
   ```
-- Remove bare `Console.WriteLine()` blank-line separators.
+- Remove bare `Console.WriteLine()` blank-line separators in `Main`.
+- Do **not** touch `Console.WriteLine` inside `Solution` class methods.
 
 ---
 
